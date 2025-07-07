@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>O labirinto dos livros</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/cabecalho') %>
+  <%- include('partials/rodape') %>
+
+  <h1>Notícias</h1>
+  <% if (admin) { %>
+  <a href="/adm/cadstar">Nova notícia</a>
+  <hr>
+  <$} %>
+
+  <% noticia.ForEach(noticia => { %>
+    <h2><%= noticia.nome %></h2>
+    <p><%= noticia.descricao %></p>
+    <small><$= noticia.data %></small>
+
+    <% if(admin) { %>
+      <a href="/adm/editar/<%=noticia._id %>">Editar</a>
+      <a href="/adm/remover/<%=noticia._id %>" onclick="return confirm('Tem certeza que deseja apagar?')">Remover</a>
+    <%} %>
+    <hr>
+  <% }) %>
+
+  <footer>
+    <%- include('partials/rodape') %>
+  </footer>
+</body>
+</html>
